@@ -1,12 +1,16 @@
-<IfModule mod_rewrite.c>
-  RewriteEngine On
-  RewriteBase /
-  RewriteRule ^index\.html$ - [L]
-  RewriteCond %{REQUEST_FILENAME} !-f
-  RewriteCond %{REQUEST_FILENAME} !-d
-  RewriteCond %{REQUEST_FILENAME} !-l
-  RewriteRule . /index.html [L]
-</IfModule>
+Options -MultiViews
+RewriteEngine On
+RewriteBase /
+
+# If the request is not for a valid file or directory
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteCond %{REQUEST_FILENAME} !-d
+
+# If the request is not for a valid file
+RewriteCond %{REQUEST_URI} !\.(?:css|js|jpg|jpeg|gif|png|ico|svg|woff2|ttf|eot|woff)$ [NC]
+
+# Redirect everything else to index.html
+RewriteRule ^ index.html [L]
 
 # Enable CORS
 <IfModule mod_headers.c>
@@ -23,4 +27,15 @@
   ExpiresByType image/svg+xml "access plus 1 year"
   ExpiresByType text/css "access plus 1 month"
   ExpiresByType application/javascript "access plus 1 month"
-</IfModule> 
+</IfModule>
+
+# Compress text, html, javascript, css, xml:
+AddOutputFilterByType DEFLATE text/plain
+AddOutputFilterByType DEFLATE text/html
+AddOutputFilterByType DEFLATE text/xml
+AddOutputFilterByType DEFLATE text/css
+AddOutputFilterByType DEFLATE application/xml
+AddOutputFilterByType DEFLATE application/xhtml+xml
+AddOutputFilterByType DEFLATE application/rss+xml
+AddOutputFilterByType DEFLATE application/javascript
+AddOutputFilterByType DEFLATE application/x-javascript 
