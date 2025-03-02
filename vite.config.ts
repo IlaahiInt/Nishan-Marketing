@@ -13,11 +13,12 @@ export default defineConfig({
   server: {
     port: 3000
   },
-  base: './',
+  base: '/',
   build: {
     outDir: 'dist',
     assetsDir: 'assets',
     emptyOutDir: true,
+    sourcemap: false,
     rollupOptions: {
       output: {
         manualChunks: {
