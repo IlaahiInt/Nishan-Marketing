@@ -1,0 +1,38 @@
+# Add proper MIME types
+<IfModule mod_mime.c>
+    AddType application/javascript .js
+    AddType application/json .json
+    AddType text/css .css
+    AddType image/svg+xml .svg
+    AddType application/javascript .mjs
+    AddType text/javascript .mjs
+</IfModule>
+
+# Existing rewrite rules
+<IfModule mod_rewrite.c>
+    RewriteEngine On
+    RewriteBase /
+    
+    # If not a file/directory, serve index.html
+    RewriteCond %{REQUEST_FILENAME} !-f
+    RewriteCond %{REQUEST_FILENAME} !-d
+    RewriteRule . /index.html [L]
+</IfModule>
+
+# Enable CORS and other headers
+<IfModule mod_headers.c>
+    Header set Access-Control-Allow-Origin "*"
+    Header set X-Content-Type-Options "nosniff"
+    Header set X-Frame-Options "DENY"
+    Header set X-XSS-Protection "1; mode=block"
+    
+    # Set correct MIME types for JavaScript modules
+    <FilesMatch "\.js$">
+        Header set Content-Type "application/javascript"
+    </FilesMatch>
+    <FilesMatch "\.mjs$">
+        Header set Content-Type "application/javascript"
+    </FilesMatch>
+</IfModule>
+
+# Existing compression and caching rules... 
