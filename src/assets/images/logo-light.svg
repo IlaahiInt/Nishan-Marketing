@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg id="LOGO" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1129.34 374.83">
+  <defs>
+    <style>
+      .cls-1 {
+        letter-spacing: .1em;
+      }
+
+      .cls-2 {
+        font-family: Quicksand-Bold, 'Quicksand Bold';
+        font-size: 165.54px;
+        font-variation-settings: ';
+        font-weight: 700;
+      }
+
+      .cls-2, .cls-3, .cls-4 {
+        fill: #fff;
+      }
+
+      .cls-3 {
+        font-family: Quicksand-Regular, 'Quicksand Regular';
+        font-size: 139.19px;
+        font-variation-settings: ';
+      }
+
+      .cls-5 {
+        fill: #fbab38;
+      }
+
+      .cls-5, .cls-4 {
+        stroke-width: 0px;
+      }
+
+      .cls-6 {
+        letter-spacing: 0em;
+      }
+
+      .cls-7 {
+        letter-spacing: 0em;
+      }
+
+      .cls-8 {
+        letter-spacing: .11em;
+      }
+
+      .cls-9 {
+        letter-spacing: 0em;
+      }
+    </style>
+  </defs>
+  <text class="cls-3" transform="translate(414.88 116.5)"><tspan class="cls-8" x="0" y="0">N</tspan><tspan class="cls-1" x="106.89" y="0">ishan</tspan></text>
+  <text class="cls-2" transform="translate(422.19 281.04)"><tspan class="cls-6" x="0" y="0">M</tspan><tspan class="cls-7" x="134.08" y="0">a</tspan><tspan class="cls-9" x="213.87" y="0">r</tspan><tspan x="268.66" y="0">keting</tspan></text>
+  <path class="cls-4" d="m354.82,374.53c-14.43,0-26.13-11.7-26.13-26.13v-201.27l-85.14,127.89c-6.38,9.59-18.29,13.86-29.31,10.53-11.02-3.33-18.56-13.49-18.56-25.01v-114.99l-86.2,129.47c-6.38,9.59-18.29,13.86-29.31,10.53-11.02-3.33-18.56-13.49-18.56-25.01V121.24l-17.44,16.63c-10.44,9.96-26.98,9.56-36.94-.88-9.96-10.44-9.57-26.98.88-36.94l61.6-58.74c7.57-7.21,18.7-9.23,28.31-5.11,9.61,4.12,15.84,13.56,15.84,24.02v113.94L200.05,44.69c6.38-9.59,18.29-13.86,29.31-10.53,11.02,3.33,18.56,13.49,18.56,25.01v114.99l85.14-127.89c6.38-9.59,18.29-13.86,29.31-10.53,11.02,3.33,18.56,13.49,18.56,25.01v287.65c0,14.43-11.7,26.13-26.13,26.13Z"/>
+  <circle class="cls-5" cx="354.74" cy="348.63" r="26.2"/>
+</svg>

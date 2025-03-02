@@ -1,0 +1,223 @@
+@import '@fontsource/montserrat/400.css';
+@import '@fontsource/montserrat/500.css';
+@import '@fontsource/montserrat/600.css';
+@import '@fontsource/montserrat/700.css';
+@import '@fontsource/roboto/400.css';
+@import '@fontsource/roboto/500.css';
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    @apply scroll-smooth;
+  }
+  
+  body {
+    @apply font-roboto bg-gray-light text-text-primary antialiased;
+  }
+
+  h1, h2, h3, h4, h5, h6 {
+    @apply font-montserrat font-bold text-text-primary;
+  }
+}
+
+@layer components {
+  .btn {
+    @apply inline-flex items-center px-6 py-3 rounded-lg font-medium transition-all;
+  }
+  
+  .btn-primary {
+    @apply btn bg-primary text-secondary hover:bg-primary-dark;
+  }
+  
+  .btn-secondary {
+    @apply btn bg-secondary text-white hover:bg-secondary-light;
+  }
+
+  .container {
+    @apply max-w-7xl mx-auto px-4 sm:px-6 lg:px-8;
+  }
+
+  /* Footer specific styles */
+  .footer {
+    @apply bg-footer-bg py-16;
+  }
+
+  .footer-heading {
+    @apply text-xl font-bold text-footer-heading mb-6;
+  }
+
+  .footer-link {
+    @apply text-footer-link hover:text-primary transition-colors;
+  }
+
+  .footer-text {
+    @apply text-footer-text;
+  }
+
+  .footer-section {
+    @apply space-y-4;
+  }
+
+  .footer-social-link {
+    @apply text-footer-link hover:text-primary transition-colors inline-flex items-center gap-2;
+  }
+
+  /* Pre-footer section (CTA section) */
+  .pre-footer {
+    @apply bg-gradient-to-r from-primary to-primary-dark py-20;
+  }
+
+  .pre-footer-heading {
+    @apply text-3xl sm:text-4xl font-bold text-white mb-6;
+  }
+
+  .pre-footer-text {
+    @apply text-lg text-white/90 mb-8;
+  }
+
+  /* Navigation links */
+  .nav-link {
+    @apply text-text-primary hover:text-primary transition-colors;
+  }
+
+  /* Content text styles */
+  .text-body {
+    @apply text-text-secondary leading-relaxed;
+  }
+
+  .text-muted {
+    @apply text-text-muted;
+  }
+
+  /* Card text */
+  .card-title {
+    @apply text-text-primary font-bold;
+  }
+
+  .card-body {
+    @apply text-text-secondary;
+  }
+}
+
+:root {
+  --color-primary: #F4A026;
+  --color-secondary: #0D1B2A;
+  --color-gray-light: #F8F9FA;
+  --color-text-primary: #0D1B2A;
+  --color-text-secondary: #4A5568;
+  --color-text-muted: #718096;
+}
+
+/* Enhanced text hierarchy */
+.heading-xl {
+  @apply text-4xl sm:text-5xl lg:text-6xl font-bold text-text-primary;
+}
+
+.heading-lg {
+  @apply text-3xl sm:text-4xl font-bold text-text-primary;
+}
+
+.heading-md {
+  @apply text-2xl sm:text-3xl font-bold text-text-primary;
+}
+
+/* Link states */
+a {
+  @apply text-text-secondary hover:text-primary transition-colors;
+}
+
+/* Form elements */
+input, textarea, select {
+  @apply bg-white border-gray-200 text-text-primary;
+}
+
+/* Focus states */
+.focus-ring {
+  @apply focus:ring-2 focus:ring-primary focus:ring-opacity-50;
+}
+
+/* Text selection */
+::selection {
+  @apply bg-primary/20 text-text-primary;
+}
+
+/* Contrast adjustments for accessibility */
+.dark-bg {
+  @apply text-text-light;
+}
+
+.light-bg {
+  @apply text-text-primary;
+}
+
+/* Navbar animations */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+.nav-link::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 2px;
+  background-color: theme('colors.primary');
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.3s ease;
+}
+
+.nav-link:hover::after {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+/* Page transition animations */
+.page-enter {
+  opacity: 0;
+  transform: translateY(20px);
+}
+
+.page-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 300ms, transform 300ms;
+}
+
+.page-exit {
+  opacity: 1;
+}
+
+.page-exit-active {
+  opacity: 0;
+  transition: opacity 300ms;
+}
+
+/* Update the main content margin */
+main {
+  margin-top: calc(theme('spacing.20') + theme('spacing.8')); /* Adjusted for single bar height */
+}
+
+/* Update scroll padding */
+html {
+  @apply scroll-smooth;
+  scroll-padding-top: theme('spacing.20'); /* Adjusted for single bar */
+}
+
+/* Add to your existing styles */
+@layer utilities {
+  .modal-open {
+    @apply overflow-hidden;
+  }
+}
