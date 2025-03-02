@@ -27,12 +27,30 @@
     Header set X-XSS-Protection "1; mode=block"
     
     # Set correct MIME types for JavaScript modules
-    <FilesMatch "\.js$">
-        Header set Content-Type "application/javascript"
+    <FilesMatch "\.(js|mjs)$">
+        Header set Content-Type "application/javascript; charset=utf-8"
     </FilesMatch>
-    <FilesMatch "\.mjs$">
-        Header set Content-Type "application/javascript"
+    <FilesMatch "\.css$">
+        Header set Content-Type "text/css; charset=utf-8"
     </FilesMatch>
 </IfModule>
 
-# Existing compression and caching rules... 
+# Force MIME types
+<IfModule mod_headers.c>
+    <FilesMatch "\.(js|mjs)$">
+        ForceType application/javascript
+    </FilesMatch>
+</IfModule>
+
+# Compression and caching
+<IfModule mod_deflate.c>
+    AddOutputFilterByType DEFLATE text/html text/plain text/css application/javascript application/json
+</IfModule>
+
+<IfModule mod_expires.c>
+    ExpiresActive On
+    ExpiresByType application/javascript "access plus 1 year"
+    ExpiresByType text/css "access plus 1 year"
+    ExpiresByType image/png "access plus 1 year"
+    ExpiresByType image/jpeg "access plus 1 year"
+</IfModule> 
