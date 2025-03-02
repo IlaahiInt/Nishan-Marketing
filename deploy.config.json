@@ -1,1 +1,7 @@
- 
+{
+  "host": "your-ftp-host.hostinger.com",
+  "username": "your-username",
+  "password": "your-password",
+  "remotePath": "/public_html/",
+  "localPath": "./dist"
+} 

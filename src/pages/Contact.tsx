@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { motion } from 'framer-motion';
+import { motion, useScroll, useTransform } from 'framer-motion';
 import {
   Mail,
   Phone,
@@ -17,6 +17,10 @@ import {
 } from 'lucide-react';
 
 const Contact = () => {
+  const { scrollYProgress } = useScroll();
+  const opacity = useTransform(scrollYProgress, [0, 0.2], [0, 1]);
+  const y = useTransform(scrollYProgress, [0, 0.2], [100, 0]);
+
   const [formStatus, setFormStatus] = useState<'idle' | 'submitting' | 'success' | 'error'>('idle');
   const [formData, setFormData] = useState({
     fullName: '',
@@ -38,6 +42,14 @@ const Contact = () => {
       setTimeout(() => setFormStatus('idle'), 3000);
     }, 1000);
   };
+
+  const contactItems = [
+    { icon: Mail, text: "info@nishanmarketing.com" },
+    { icon: Globe, text: "www.nishanmarketing.com" },
+    { icon: MapPin, text: "Office#5, Opposite Fatima Hospital, University Road, Sargodha" },
+    { icon: Phone, text: "+92 306 9098 198" },
+    { icon: Clock, text: "Mon - Fri: 9:00 AM - 6:00 PM PKT" },
+  ];
 
   return (
     <div className="bg-gray-50">
@@ -199,40 +211,23 @@ const Contact = () => {
               <div className="bg-white rounded-2xl shadow-lg p-8">
                 <h2 className="text-2xl font-bold text-secondary mb-6">Our Contact Information</h2>
                 <div className="space-y-6">
-                  <a href="mailto:info@nishanmarketing.com" 
-                    className="flex items-center text-gray-600 hover:text-primary transition-colors group"
-                  >
-                    <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors">
-                      <Mail className="h-6 w-6 text-primary" />
-                    </div>
-                    <span>info@nishanmarketing.com</span>
-                  </a>
-                  <a href="https://www.nishanmarketing.com" 
-                    className="flex items-center text-gray-600 hover:text-primary transition-colors group"
-                  >
-                    <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mr-4 group-hover:bg-primary/20 transition-colors">
-                      <Globe className="h-6 w-6 text-primary" />
-                    </div>
-                    <span>www.nishanmarketing.com</span>
-                  </a>
-                  <div className="flex items-center text-gray-600 group">
-                    <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-                      <MapPin className="h-6 w-6 text-primary" />
-                    </div>
-                    <span>Office#5, Opposite Fatima Hospital, University Road, Sargodha</span>
-                  </div>
-                  <div className="flex items-center text-gray-600 group">
-                    <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-                      <Phone className="h-6 w-6 text-primary" />
-                    </div>
-                    <span>+92 306 9098 198</span>
-                  </div>
-                  <div className="flex items-center text-gray-600 group">
-                    <div className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mr-4">
-                      <Clock className="h-6 w-6 text-primary" />
-                    </div>
-                    <span>Mon - Fri: 9:00 AM - 6:00 PM PKT</span>
-                  </div>
+                  {contactItems.map((item, index) => (
+                    <motion.a
+                      key={index}
+                      initial={{ opacity: 0, x: -20 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: index * 0.2 }}
+                      className="flex items-center text-gray-600 hover:text-primary transition-colors group"
+                    >
+                      <motion.div 
+                        whileHover={{ scale: 1.1 }}
+                        className="h-12 w-12 bg-primary/10 rounded-full flex items-center justify-center mr-4"
+                      >
+                        <item.icon className="h-6 w-6 text-primary" />
+                      </motion.div>
+                      <span>{item.text}</span>
+                    </motion.a>
+                  ))}
                 </div>
               </div>
 

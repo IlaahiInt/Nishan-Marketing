@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Menu, X, Mail, Phone, MapPin, Facebook, Instagram, Linkedin, Twitter } from 'lucide-react';
 import logoDark from '../assets/images/dark-logo.png';
+import { motion } from 'framer-motion';
 
 const Navbar = () => {
   const [isOpen, setIsOpen] = useState(false);
@@ -74,7 +75,9 @@ const Navbar = () => {
             </div>
             
             <div className="flex items-center gap-4">
-              <a 
+              <motion.a 
+                whileHover={{ scale: 1.1 }}
+                whileTap={{ scale: 0.95 }}
                 href={socialLinks.facebook}
                 target="_blank"
                 rel="noopener noreferrer"
@@ -82,7 +85,7 @@ const Navbar = () => {
                 aria-label="Follow us on Facebook"
               >
                 <Facebook className="h-4 w-4" />
-              </a>
+              </motion.a>
               <a 
                 href={socialLinks.instagram}
                 target="_blank"
@@ -142,14 +145,24 @@ const Navbar = () => {
             {/* Desktop Menu */}
             <div className="hidden md:flex items-center space-x-8">
               {['Home', 'Services', 'About', 'Portfolio', 'Blog'].map((item) => (
-                <Link
+                <motion.div
                   key={item}
-                  to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
-                  className={`nav-link relative overflow-hidden group`}
+                  whileHover={{ y: -2 }}
+                  transition={{ type: "spring", stiffness: 300 }}
                 >
-                  <span className="relative z-10">{item}</span>
-                  <span className="absolute inset-x-0 bottom-0 h-0.5 bg-primary transform origin-left scale-x-0 transition-transform group-hover:scale-x-100" />
-                </Link>
+                  <Link
+                    to={item === 'Home' ? '/' : `/${item.toLowerCase()}`}
+                    className={`nav-link relative overflow-hidden group`}
+                  >
+                    <span className="relative z-10">{item}</span>
+                    <motion.span 
+                      className="absolute inset-x-0 bottom-0 h-0.5 bg-primary transform origin-left"
+                      initial={{ scaleX: 0 }}
+                      whileHover={{ scaleX: 1 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </Link>
+                </motion.div>
               ))}
               <Link 
                 to="/contact" 
